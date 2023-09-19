@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import ContactList from "./Components/ContactList";
+import "./Styles/App.css";
+import ContactAdder from "./Components/ContactAdder";
+import { useState } from "react";
+import NavBar from "./Components/NavBar";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+const App = () => {
+  const getData = JSON.parse(localStorage.getItem("contacts"));
+  const [contact, setContact] = useState(getData ? getData : []);
+  const onContactAdded = (contactData) => {
+    const allContacts = [...contact, contactData];
+    setContact(allContacts);
+    localStorage.setItem("contacts", JSON.stringify(allContacts));
+  };
+  const handleClearAll = () => {
+    localStorage.clear();
+    setContact([]);
+  }
+  return ( 
+    <>
+      <NavBar />
+      <div className="container">
+        <h3>Contact Adder:</h3>
+        <ContactAdder onContactAdded={onContactAdded} />
+      </div>
+      <div className="container">
+        <h3>Contact List:</h3>
+        {contact.map((data) => (
+          <ContactList key={data.id} contact={data} />
+        ))}
+        <br />
+        <button onClick={handleClearAll} style={{ backgroundColor: "#CC0000" }}>Clear All Contacts</button>
+      </div>
+    </>
   );
-}
-
+};
 export default App;

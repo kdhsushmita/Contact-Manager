@@ -1,0 +1,41 @@
+*{
+  font-family: 'Poppins', sans-serif;
+  padding: 0px;
+  margin: 0px;
+}
+.container{
+  background-color: rgb(190, 185, 185);
+  padding: 1rem;
+  margin: 5px;
+  border-radius: 5px;
+}
+.contactList{
+  background-color: #FFF;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 10px;
+}
+.nav_bar{
+  background-color:#515AA5;
+  text-align: center;
+  padding: 10px;
+  font-size: 20px;
+  color: white;
+}
+input{
+  border: 0px;
+  padding: 10px;
+  margin: 2px;
+  border-radius: 10px;
+  outline: none;
+}
+button{
+  border: 0px;
+  padding: 10px;
+  margin: 2px;
+  border-radius: 10px;
+  outline: none;
+  background-color:#515AA5;
+  color: white;
+  cursor: pointer;
+}
